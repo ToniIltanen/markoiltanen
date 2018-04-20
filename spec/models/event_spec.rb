@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Event, :type => :model do
+describe Event, :type => :model do
   it 'is valid with valid attributes' do
     event = Event.new
     event.name = 'Test'
