@@ -6,7 +6,6 @@ describe News, :type => :model do
     category = Newscategory.new
     category.name = 'Test'
     category.save
-
     news = News.new
     news.title = 'test'
     news.text = 'test'
@@ -16,17 +15,23 @@ describe News, :type => :model do
   end
 
   it 'is not valid without a title' do
+    category = Newscategory.new
+    category.name = 'Test'
+    category.save
     news = News.new
     news.text = 'test'
-    news.newscategory_id = 1
+    news.newscategory = category
     news.picture = File.new(Rails.root.join("spec/mocks/testpicture.jpg"))
     expect(news).to_not be_valid
   end
 
   it 'is not valid without a text' do
+    category = Newscategory.new
+    category.name = 'Test'
+    category.save
     news = News.new
     news.title = 'Test'
-    news.newscategory_id = 1
+    news.newscategory = category
     news.picture = File.new(Rails.root.join("spec/mocks/testpicture.jpg"))
     expect(news).to_not be_valid
   end
@@ -40,10 +45,13 @@ describe News, :type => :model do
   end
 
   it 'is not vvalid without picture' do
+    category = Newscategory.new
+    category.name = 'Test'
+    category.save
     news = News.new
     news.title = 'Test'
     news.text = 'test'
-    news.newscategory_id = 1
+    news.newscategory = category
     expect(news).to_not be_valid
   end
 end
