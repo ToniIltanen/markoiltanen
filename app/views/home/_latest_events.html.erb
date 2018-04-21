@@ -20,7 +20,7 @@
                 <div class="kode_lst1_des col-xs-12">
                   <h6><%= event.name %></h6>
                   <ul>
-                    <li><i class="fa fa-clock-o"></i><%= event.time.to_s %></li>
+                    <li><i class="fa fa-clock-o"></i><%= '%02d' % event.time.hour + ':' + '%02d' % event.time.min %></li>
                     <li><i class="fa fa-map-marker"></i><%= event.location %></li>
                   </ul>
                   <p><%= event.description %></p>
