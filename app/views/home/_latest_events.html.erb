@@ -32,6 +32,11 @@
           <% index = index + 1 %>
       <% end %>
     </ul>
+        <% if @events.count == 5 %>
+          <div class="kode_press_link" style="margin-top:40px;">
+            <a class="kode_link_2" href="/tapahtumat">Lisää tapahtumia</a>
+          </div>
+        <% end %>
     <% else %>
       <h4 style="text-align:center;">Ei tapahtumia!</h4>
     <% end %>
