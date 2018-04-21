@@ -3,5 +3,4 @@ class HomeController < ApplicationController
   def main
     @events = Event.where('date >= ?', DateTime.now).order(date: :asc, time: :asc).take(5)
   end
-
 end
