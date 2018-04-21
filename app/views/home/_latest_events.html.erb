@@ -5,48 +5,35 @@
       <h6>Mitä, missä ja</h6>
       <h4>Milloin?</h4>
     </div>
-
+    <% if @events.present? %>
     <ul class="kode_camp_outr_wrap">
-      <li>
-        <div class="kode_campagin_lst">
-          <div class="kode_campgn_lst1">
-            <div class="kode_cam_date">
-              <h4>12</h4>
-              <h6>Mar</h6>
-            </div>
+      <% index = 1 %>
+      <% @events.each do  |event|  %>
+          <li class="row">
+            <div class="kode_campagin_lst">
+              <div class="<%= index % 2 != 0 ? 'kode_campgn_lst1' : 'kode_campgn_lst2'%>">
+                <div class="kode_cam_date col-xs-12">
+                  <h4><%= event.date.day %></h4>
+                  <h6><%= event.get_month %></h6>
+                </div>
 
-            <div class="kode_lst1_des">
-              <h6>Pystykaffella</h6>
-              <ul>
-                <li><i class="fa fa-clock-o"></i>6:30 pm</li>
-                <li><i class="fa fa-map-marker"></i>Tori Pystykahvila, Rauma</li>
-              </ul>
-              <p>Ehdokas tavattavissa Rauman pystykahvilassa, tule juttelemaan päivän polttavista kysymyksistä ja aiheista, jotka askarruttavat juuri sinua!</p>
+                <div class="kode_lst1_des col-xs-12">
+                  <h6><%= event.name %></h6>
+                  <ul>
+                    <li><i class="fa fa-clock-o"></i><%= event.time.to_s %></li>
+                    <li><i class="fa fa-map-marker"></i><%= event.location %></li>
+                  </ul>
+                  <p><%= event.description %></p>
 
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      </li>
-      <li>
-        <div class="kode_campagin_lst">
-          <div class="kode_campgn_lst2">
-            <div class="kode_lst1_des">
-              <h6>Lehdistötilaisuus</h6>
-              <ul>
-                <li><i class="fa fa-clock-o"></i>12:30 pm</li>
-                <li><i class="fa fa-map-marker"></i>Mediatalo, Rauma</li>
-              </ul>
-              <p>Yleinen lehdistötilaisuus kaikille median edustajille. Tilaisuuden kesto 20 minuuttia. Mikäli teillä on kysymyslistoja, toivomme niitä etukäteen aikapulan vuoksi.</p>
-            </div>
-
-            <div class="kode_cam_date">
-              <h4>28</h4>
-              <h6>Nov</h6>
-            </div>
-          </div>
-        </div>
-      </li>
+          </li>
+          <% index = index + 1 %>
+      <% end %>
     </ul>
-
+    <% else %>
+      <h4 style="text-align:center;">Ei tapahtumia!</h4>
+    <% end %>
   </div>
 </section>
