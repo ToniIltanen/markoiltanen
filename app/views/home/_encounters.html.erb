@@ -4,140 +4,38 @@
       <h4>Kohtaamisia</h4>
     </div>
 
-    <div class="kode_latest_galry">
-      <ul class="kode_tab_lnk filter-item" id="filterable-item-filter-1">
-        <li class="active"><a data-value="all" href="#">All</a></li>
-        <li><a data-value="1" href="#">Rauma</a></li>
-        <li><a data-value="2" href="#">Pori</a></li>
-        <li><a data-value="3" href="#">Nakkila</a></li>
-        <li><a data-value="4" href="#">Harjavalta</a></li>
-        <li><a data-value="5" href="#">Eura</a></li>
-      </ul>
-    </div>
-  </div>
-
-  <!--Gallery List Wrap Start-->
-  <div id="filterable-item-holder-1" class="filterable_container">
-    <div class="home_gallery filterable-item all 1">
-      <div class="kode_galry_item">
-        <figure>
-          <img src="assets/latest-wrk-01.jpg" alt="Image Here">
-          <figcaption>
-            <a data-rel="prettyPhoto[]" href="assets/latest-wrk-01.jpg"><i class="icon-add52"></i></a>
-          </figcaption>
-        </figure>
-        <div class="kode_galry_des">
-          <p>Rauma </p>
-          <h6>Toritapahtuma 12.04</h6>
+    <% if @locations.count < 1 || @encounters.count < 1 %>
+      <h4 style="text-align:center;">Woops, ei kohtaamisia :(</h4>
+     </div>
+    <% else %>
+        <div class="kode_latest_galry">
+          <ul class="kode_tab_lnk filter-item" id="filterable-item-filter-1">
+            <li><a data-value="all" href="#">Kaikki</a></li>
+            <% @locations.each do  |l|  %>
+                <li><a data-value="<%= l.id %>" href="#"><%= l.name %></a></li>
+            <% end %>
+          </ul>
         </div>
       </div>
-    </div>
 
-    <div class="home_gallery filterable-item all 1">
-      <div class="kode_galry_item">
-        <figure>
-          <img src="assets/latest-wrk-02.jpg" alt="Image Here">
-          <figcaption>
-            <a data-rel="prettyPhoto[]" href="assets/latest-wrk-02.jpg"><i class="icon-add52"></i></a>
-          </figcaption>
-        </figure>
-        <div class="kode_galry_des">
-          <p>Rauma </p>
-          <h6>Lastentapahtuma 15.04</h6>
-        </div>
+      <!--Gallery List Wrap Start-->
+      <div id="filterable-item-holder-1" class="filterable_container">
+      <% @encounters.each do  |e|  %>
+            <div class="home_gallery filterable-item all <%= e.location_id %>">
+              <div class="kode_galry_item">
+                <figure>
+                  <img src="<%= e.picture.url(:medium) %>" alt="<%= e.title %>">
+                  <figcaption>
+                    <a data-rel="prettyPhoto[]" href="<%= e.picture.url %>"><i class="icon-add52"></i></a>
+                  </figcaption>
+                </figure>
+                <div class="kode_galry_des">
+                  <p><%= e.location.name %> </p>
+                  <h6><%= e.title %></h6>
+                </div>
+              </div>
+            </div>
+      <% end %>
       </div>
-    </div>
-
-    <div class="home_gallery filterable-item all 2">
-      <div class="kode_galry_item">
-        <figure>
-          <img src="assets/latest-wrk-05.jpg" alt="Image Here">
-          <figcaption>
-            <a data-rel="prettyPhoto[]" href="assets/latest-wrk-05.jpg"><i class="icon-add52"></i></a>
-          </figcaption>
-        </figure>
-        <div class="kode_galry_des">
-          <p>Pori </p>
-          <h6>Vaalibussikiertue</h6>
-        </div>
-      </div>
-    </div>
-
-    <div class="home_gallery filterable-item all 2 3 4">
-      <div class="kode_galry_item">
-        <figure>
-          <img src="assets/latest-wrk-04.jpg" alt="Image Here">
-          <figcaption>
-            <a data-rel="prettyPhoto[]" href="assets/latest-wrk-04.jpg"><i class="icon-add52"></i></a>
-          </figcaption>
-        </figure>
-        <div class="kode_galry_des">
-          <p>Foreign </p>
-          <h6>Sed ut perspiciatis</h6>
-        </div>
-      </div>
-    </div>
-
-    <div class="home_gallery filterable-item all 2 1 4 5">
-      <div class="kode_galry_item">
-        <figure>
-          <img src="assets/latest-wrk-05.jpg" alt="Image Here">
-          <figcaption>
-            <a data-rel="prettyPhoto[]" href="assets/latest-wrk-05.jpg"><i class="icon-add52"></i></a>
-          </figcaption>
-        </figure>
-        <div class="kode_galry_des">
-          <p>Foreign </p>
-          <h6>Sed ut perspiciatis</h6>
-        </div>
-      </div>
-    </div>
-
-    <div class="home_gallery filterable-item all 2 1 5">
-      <div class="kode_galry_item">
-        <figure>
-          <img src="assets/latest-wrk-06.jpg" alt="Image Here">
-          <figcaption>
-            <a data-rel="prettyPhoto[]" href="assets/latest-wrk-06.jpg"><i class="icon-add52"></i></a>
-          </figcaption>
-        </figure>
-        <div class="kode_galry_des">
-          <p>Foreign </p>
-          <h6>Sed ut perspiciatis</h6>
-        </div>
-      </div>
-    </div>
-
-    <div class="home_gallery filterable-item all 2 1 3 5">
-      <div class="kode_galry_item">
-        <figure>
-          <img src="assets/latest-wrk-07.jpg" alt="Image Here">
-          <figcaption>
-            <a data-rel="prettyPhoto[]" href="assets/latest-wrk-07.jpg"><i class="icon-add52"></i></a>
-          </figcaption>
-        </figure>
-        <div class="kode_galry_des">
-          <p>Foreign </p>
-          <h6>Sed ut perspiciatis</h6>
-        </div>
-      </div>
-    </div>
-
-    <div class="home_gallery filterable-item all 2 1 3 5">
-      <div class="kode_galry_item">
-        <figure>
-          <img src="assets/latest-wrk-08.jpg" alt="Image Here">
-          <figcaption>
-            <a data-rel="prettyPhoto[]" href="assets/latest-wrk-08.jpg"><i class="icon-add52"></i></a>
-          </figcaption>
-        </figure>
-        <div class="kode_galry_des">
-          <p>Foreign </p>
-          <h6>Sed ut perspiciatis</h6>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!--Gallery List Wrap Start-->
-
+    <% end %>
 </section>
