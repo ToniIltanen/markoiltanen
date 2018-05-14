@@ -1,13 +1,14 @@
 <div class="col-md-3">
   <div class="kode_foo_gallery widget_hdg">
     <h5>Kuvat</h5>
-    <ul>
-      <li><a href="#"><img src="assets/instagram-01.jpg" alt="Image Here"></a></li>
-      <li><a href="#"><img src="assets/instagram-02.jpg" alt="Image Here"></a></li>
-      <li><a href="#"><img src="assets/instagram-03.jpg" alt="Image Here"></a></li>
-      <li><a href="#"><img src="assets/instagram-04.jpg" alt="Image Here"></a></li>
-      <li><a href="#"><img src="assets/instagram-05.jpg" alt="Image Here"></a></li>
-      <li><a href="#"><img src="assets/instagram-06.jpg" alt="Image Here"></a></li>
-    </ul>
+    <% if @encounters.count < 1 %>
+        <h6 style="text-align:center;">Woops, ei kuvia!</h6>
+    <% else %>
+      <ul>
+        <% @encounters.each do |t| %>
+            <li><a data-rel="prettyPhoto[]" href="<%= t.picture.url %>"><img src="<%= t.picture.url(:thumb)%>" alt="<%= t.title %>"></a></li>
+        <% end %>
+      </ul>
+    <% end %>
   </div>
 </div>
