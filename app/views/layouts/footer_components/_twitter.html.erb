@@ -1,8 +1,9 @@
-<% test = get_twitter_feed %>
+<% get_twitter_feed %>
 <div class="col-md-3">
   <div class="kode_widgt_tweets widget_hdg">
     <h5>Twitter</h5>
     <ul>
+      <% if @tweets != nil %>
       <% @tweets.each do |tweet| %>
       <li>
         <i class="fa fa-twitter"></i>
@@ -11,6 +12,7 @@
           <%= tweet.text %>
         </div>
       </li>
+      <% end %>
       <% end %>
     </ul>
   </div>

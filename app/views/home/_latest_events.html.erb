@@ -5,7 +5,7 @@
       <h6>Mitä, missä ja</h6>
       <h4>Milloin?</h4>
     </div>
-    <% if @events.present? %>
+    <% if @events != nil %>
     <ul class="kode_camp_outr_wrap">
       <% index = 1 %>
       <% @events.each do  |event|  %>

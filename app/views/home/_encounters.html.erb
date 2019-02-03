@@ -1,10 +1,11 @@
+<% get_encounters %>
 <section class="kode_latest_wrk_bg">
   <div class="container">
     <div class="kode_hdg_1">
       <h4>Kohtaamisia</h4>
     </div>
 
-    <% if @locations.count < 1 || @encounters.count < 1 %>
+    <% if @locations == nil || @encounters == nil %>
       <h4 style="text-align:center;">Woops, ei kohtaamisia :(</h4>
      </div>
     <% else %>
