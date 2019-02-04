@@ -1,6 +1,7 @@
 <div class="col-md-3">
   <div class="kode_foo_gallery widget_hdg">
     <h5>Kuvat</h5>
+    <% if @encounters != nil %>
     <% if @encounters.count < 1 %>
         <h6 style="text-align:center;">Woops, ei kuvia!</h6>
     <% else %>
@@ -9,6 +10,7 @@
             <li><a data-rel="prettyPhoto[]" href="<%= t.picture.url %>"><img src="<%= t.picture.url(:thumb)%>" alt="<%= t.title %>"></a></li>
         <% end %>
       </ul>
+    <% end %>
     <% end %>
   </div>
 </div>
