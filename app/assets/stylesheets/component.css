@@ -1,8 +1,9 @@
 /* Common styles of menus */
 .dl-menuwrapper {
-	float: right;
+	float: left;
 	position: relative;
 	z-index:100;
+    margin-left: 15px;
 }
 
 .dl-menuwrapper button {
